@@ -2,9 +2,11 @@ package de.start.knower;
 
 import de.start.knower.model.Flavor;
 import de.start.knower.model.Producer;
+import de.start.knower.model.Recipe;
 import de.start.knower.model.User;
 import de.start.knower.repository.FlavorRepository;
 import de.start.knower.repository.ProducerRepository;
+import de.start.knower.repository.RecipeRepository;
 import de.start.knower.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,11 +17,13 @@ public class StartUp implements CommandLineRunner {
     private final FlavorRepository flavorRepository;
     private final ProducerRepository producerRepository;
     private final UserRepository userRepository;
+    private final RecipeRepository recipeRepository;
 
-    public StartUp(FlavorRepository flavorRepository, ProducerRepository producerRepository, UserRepository userRepository) {
+    public StartUp(FlavorRepository flavorRepository, ProducerRepository producerRepository, UserRepository userRepository, RecipeRepository recipeRepository) {
         this.flavorRepository = flavorRepository;
         this.producerRepository = producerRepository;
         this.userRepository = userRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @Override
@@ -37,9 +41,16 @@ public class StartUp implements CommandLineRunner {
         flavorRepository.save(calipitter);
         
         User patrick = new User("Patrick");
-        patrick.getFlavors().add(calipitter);
-        patrick.getFlavors().add(cryptonite);
         userRepository.save(patrick);
+        
+        Recipe recipecalipper 
+                = recipeRepository.save(new Recipe(patrick, calipitter, "12", "the next time with 112 percent mixture"));
+        Recipe recipecryptonite
+                = recipeRepository.save(new Recipe(patrick, cryptonite, "5", "5 percent is perfect and the flavor gets 5 of 5 stars"));
+        patrick.getRecipes().add(recipecalipper);
+        patrick.getRecipes().add(recipecryptonite);
+        
+        
         
         
         
