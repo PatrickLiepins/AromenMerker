@@ -20,13 +20,14 @@
                              data-th-each="recipe : ${user.recipes}">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"
-                                        data-th-text="${recipe.flavor.name}">Panel title</h3>
+                                    <a data-th-href="|/recipes/${recipe.id}|"><h3 class="panel-title"
+                                        data-th-text="${recipe.flavor.name}"></h3></a>
                                 </div>
                                 <div class="panel-body">
                                     <p data-th-text="|Hersteller: ${recipe.flavor.producer.name}|"></p>
                                     <p data-th-text="|Anteil: ${recipe.flavor.mixture}%|"></p>
                                     <p data-th-text="|Mein Preis: ${recipe.flavor.price} €|"></p>
+                                    <p data-th-text="|Meine Notiz: ${recipe.noticeShortened()}|"></p>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +40,9 @@
                 </div>
 
             </div>
+            <hr/>
             <div class="row" id="fooder">
-                <hr/>
+                
                 <p class="text-center">&copy; by Patrick Liepins 2016</p>
             </div>
         </div>
