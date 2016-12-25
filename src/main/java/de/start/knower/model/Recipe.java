@@ -33,7 +33,7 @@ public class Recipe implements Serializable {
     
     public String noticeShortened () {
         if (notice.length() <=20) return notice;
-        return notice.substring(0, 20);
+        return notice.substring(0, 20) + "...";
     }
     
     
