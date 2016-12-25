@@ -4,8 +4,9 @@
         <meta charset="UTF-8"/>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="../../static/css/bootstrap-theme.css"/>
-        <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
     </head>
     <body>
         <div class="container">
@@ -14,8 +15,30 @@
                 <p data-th-text="|Willkommen ${recipe.user.username}|"></p>
             </div>
             <div class="row">
-                <div class="col-md-offset-4 col-md-9">
-                    
+                <h1 class="text-center">Das ist dein Rezept</h1>
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                <h3 class="panel-title" data-th-text="${recipe.flavor.name}"></h3>
+                                </div>
+                                <div>
+                                    <a data-th-href="|/recipes/${recipe.id}/edit|"
+                                       class="btn btn-warning"><span class="glyphicon glyphicon-cog"></span></a>
+                                    <a data-th-href="|/recipes/${recipe.id}/delete?userId=${recipe.user.id}|"
+                                       class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="panel-body">
+                            <p data-th-text="|Hersteller: ${recipe.flavor.producer.name}|"></p>
+                            <p data-th-text="|Anteil: ${recipe.flavor.mixture}%|"></p>
+                            <p data-th-text="|Mein Preis: ${recipe.flavor.price} €|"></p>
+                            <p data-th-text="|Meine Notiz: ${recipe.notice}|"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-3">
 
@@ -24,7 +47,7 @@
             </div>
             <hr/>
             <div class="row" id="fooder">
-                
+
                 <p class="text-center">&copy; by Patrick Liepins 2016</p>
             </div>
         </div>
