@@ -1,10 +1,13 @@
 package de.start.knower.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +18,8 @@ public class Producer implements Serializable {
     @Id @GeneratedValue
     private Long id;
     private String name;
+    @OneToMany(mappedBy = "producer")
+    private final Set<Flavor> flavors = new HashSet<>();
 
     public Producer(String name) {
         this.name = name;
