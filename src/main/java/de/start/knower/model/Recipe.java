@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -30,6 +29,11 @@ public class Recipe implements Serializable {
         this.flavor = flavor;
         this.myMixture = myMixture;
         this.notice = notice;
+    }
+    
+    public String noticeShortened () {
+        if (notice.length() <=20) return notice;
+        return notice.substring(0, 20);
     }
     
     
