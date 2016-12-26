@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <a data-th-href="|/users-dashboard/${recipe.user.id}|"><h1 class="text-center text-success">Der Liquid Mixtur Merker</h1></a>
+                <p data-th-text="|Willkommen ${recipe.user.username}|"></p>
+            </div>
+            <div class="row">
+                <h1 class="text-center">Das ist dein Rezept</h1>
+                <div class="col-md-offset-3 col-md-6">
+                    <form action="/recipes/edit" method="post" data-th-object="${createRecipeForm}">
+                        <div class="form-group">
+                            <label>Flavor</label>
+                            <select class="form-control">
+                                <option data-th-value="${null}">Bitte wählen</option>
+                                <option data-th-each="flavor : ${flavors}"
+                                        data-th-selected="(${flavor.id} == *{flavorId})"
+                                        data-th-field="*{flavorId}"
+                                        data-th-value="${flavor.id}"
+                                        data-th-text="${flavor.name}"
+                                        ></option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+
+            </div>
+            <hr/>
+            <div class="row" id="fooder">
+
+                <p class="text-center">&copy; by Patrick Liepins 2016</p>
+            </div>
+        </div>
+
+        <script src="../../static/js/jquery-3.1.1.min.js"></script>
+        <script src="../../static/js/bootstrap.js"></script>
+    </body>
+</html>
