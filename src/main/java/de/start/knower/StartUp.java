@@ -30,15 +30,19 @@ public class StartUp implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Producer mompop = new Producer("Mom&Pop");
         Producer owl = new Producer("OWL");
-    
+        Producer vampire = new Producer("Vampire Vape");
+        
         Flavor cryptonite = new Flavor("Cryptonite II", owl, 5, 5.45);
         Flavor calipitter = new Flavor("Calipitter Chow", mompop, 10, 5.45);
+        Flavor heisenberg = new Flavor("Heisenberg", vampire, 15, 14.99);
         
         producerRepository.save(mompop);
         producerRepository.save(owl);
+        producerRepository.save(vampire);
         
         flavorRepository.save(cryptonite);
         flavorRepository.save(calipitter);
+        flavorRepository.save(heisenberg);
         
         User patrick = new User("Patrick");
         userRepository.save(patrick);
